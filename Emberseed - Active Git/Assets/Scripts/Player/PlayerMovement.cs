@@ -4,9 +4,11 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float xSpeed;
     [SerializeField] private float ySpeed;
+    [SerializeField] private float storedHeight;
     [SerializeField] private LayerMask collisionLayer;
     [SerializeField] public int ember;
-    [SerializeField] private int state;
+    [SerializeField] public int state;
+
 
     public Rigidbody2D body;
     private Animator anim;
@@ -39,8 +41,17 @@ public class PlayerMovement : MonoBehaviour
 
         EmberMechanics();
 
+        // ----- State 0 = Normal State -----
         if (state == 0)
         {
+            xSpeed = 2;
+            ControlsNormal();
+            AnimationsNormal();
+        }
+
+        if (state == 1)
+        {
+            xSpeed = 1.6f;
             ControlsNormal();
             AnimationsNormal();
         }
@@ -60,8 +71,6 @@ public class PlayerMovement : MonoBehaviour
         float HorizontalInput = Input.GetAxisRaw("Horizontal");
         float VerticalInput = Input.GetAxisRaw("Vertical");
 
-
-
         // ----- Jumping - Initialisation -----
         if (Input.GetKeyDown(KeyCode.Space) && isGrounded())
             Jump();
@@ -77,9 +86,12 @@ public class PlayerMovement : MonoBehaviour
             body.constraints = RigidbodyConstraints2D.None;
             body.freezeRotation = true;
         }
+
+        if (isGrounded() && state == 1)
+            state = 0;
     }
 
-    // ----- Bounce Object Mechanics -----
+        // ----- Bounce Object Mechanics -----
     private void OnTriggerEnter2D(Collider2D col)
     {
         if ((col.gameObject.tag == "Bounce") && (body.velocity.y <= 0f))
@@ -87,9 +99,10 @@ public class PlayerMovement : MonoBehaviour
             Bounce();
         }
     }
-
     public void Bounce()
     {
+        storedHeight = body.velocity.y;
+        state = 1;
         body.velocity = new Vector2(body.velocity.x, ySpeed * 0.8f);
     }
 

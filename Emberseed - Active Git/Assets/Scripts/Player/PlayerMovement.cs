@@ -4,7 +4,6 @@ public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] private float xSpeed;
     [SerializeField] private float ySpeed;
-    [SerializeField] private float storedHeight;
     [SerializeField] private LayerMask collisionLayer;
     [SerializeField] public int ember;
     [SerializeField] public int state;
@@ -51,7 +50,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (state == 1)
         {
-            xSpeed = 1.6f;
+            xSpeed = 1.75f;
             ControlsNormal();
             AnimationsNormal();
         }
@@ -101,7 +100,6 @@ public class PlayerMovement : MonoBehaviour
     }
     public void Bounce()
     {
-        storedHeight = body.velocity.y;
         state = 1;
         body.velocity = new Vector2(body.velocity.x, ySpeed * 0.8f);
     }

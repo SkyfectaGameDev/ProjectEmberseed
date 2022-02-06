@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
-    [SerializeField] private float xSpeed;
-    [SerializeField] private float ySpeed;
+    [SerializeField] public float xSpeed;
+    [SerializeField] public float ySpeed;
     [SerializeField] private LayerMask collisionLayer;
     [SerializeField] public int ember;
     [SerializeField] public int state;
@@ -13,8 +13,11 @@ public class PlayerMovement : MonoBehaviour
     private Animator anim;
     private BoxCollider2D boxCollider;
     private CapsuleCollider2D capCollider;
-    
+
+    public Vector3 snapPosition;
+
     public Color emberTint;
+    public Color spriteColour;
     private Material material;
 
     private void Awake()
@@ -26,6 +29,7 @@ public class PlayerMovement : MonoBehaviour
         ember = 0;
         state = 0;
         emberTint = new Color(1, 0.57f, 0.33f, 0f);
+        spriteColour = GetComponent<SpriteRenderer>().color;
         material = GetComponent<SpriteRenderer>().material;
     }
 
@@ -39,6 +43,9 @@ public class PlayerMovement : MonoBehaviour
         anim.SetInteger("State", state);
 
         EmberMechanics();
+        BlastBlossom();
+
+
 
         // ----- State 0 = Normal State -----
         if (state == 0)
@@ -50,8 +57,14 @@ public class PlayerMovement : MonoBehaviour
 
         if (state == 1)
         {
+
             xSpeed = 1.75f;
             ControlsNormal();
+            AnimationsNormal();
+        }
+        if (state == 2)
+        {
+            xSpeed = 0f;
             AnimationsNormal();
         }
     }
@@ -90,12 +103,22 @@ public class PlayerMovement : MonoBehaviour
             state = 0;
     }
 
-        // ----- Bounce Object Mechanics -----
+        // ----- Interactable Object Mechanics -----
     private void OnTriggerEnter2D(Collider2D col)
     {
+        // ----- Bounce Off Objects -----
         if ((col.gameObject.tag == "Bounce") && (body.velocity.y <= 0f))
         {
             Bounce();
+        }
+        // ----- Snap to Blast Blossom Position
+        if (col.gameObject.tag == "Blast Blossom")
+        {
+            state = 2;
+            gameObject.transform.position = snapPosition;
+            spriteColour.a = 0;
+            GetComponent<SpriteRenderer>().color = spriteColour;
+            body.constraints = RigidbodyConstraints2D.FreezePositionY;
         }
     }
     public void Bounce()
@@ -158,5 +181,11 @@ public class PlayerMovement : MonoBehaviour
             ember += 1;
             emberTint.a += 0.15f;
         }
+    }
+
+    public void BlastBlossom()
+    {
+
+            
     }
 }

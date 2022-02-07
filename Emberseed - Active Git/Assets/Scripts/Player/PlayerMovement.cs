@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private LayerMask collisionLayer;
     [SerializeField] public int ember;
     [SerializeField] public int state;
+    [SerializeField] public int rollBuffer;
 
 
     public Rigidbody2D body;
@@ -41,11 +42,7 @@ public class PlayerMovement : MonoBehaviour
         anim.SetFloat("Vspeed", body.velocity.y);
         anim.SetFloat("Hspeed", body.velocity.x);
         anim.SetInteger("State", state);
-
-        EmberMechanics();
-        BlastBlossom();
-
-
+        anim.SetInteger("Uncurl", rollBuffer);
 
         // ----- State 0 = Normal State -----
         if (state == 0)
@@ -54,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
             ControlsNormal();
             AnimationsNormal();
         }
-
+        // ----- State 1 = Aerial State -----
         if (state == 1)
         {
 
@@ -62,6 +59,7 @@ public class PlayerMovement : MonoBehaviour
             ControlsNormal();
             AnimationsNormal();
         }
+        // ----- State 2 = Locked State -----
         if (state == 2)
         {
             xSpeed = 0f;
@@ -72,7 +70,13 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         float HorizontalInput = Input.GetAxisRaw("Horizontal");
-        
+
+        EmberMechanics();
+
+        if (rollBuffer > 0)
+            rollBuffer--;
+
+
         // ----- Moving Left & Right -----
         body.velocity = new Vector2(HorizontalInput * xSpeed, body.velocity.y);
     }
@@ -111,7 +115,7 @@ public class PlayerMovement : MonoBehaviour
         {
             Bounce();
         }
-        // ----- Snap to Blast Blossom Position
+        // ----- Snap to Blast Blossom Position -----
         if (col.gameObject.tag == "Blast Blossom")
         {
             state = 2;
@@ -125,6 +129,7 @@ public class PlayerMovement : MonoBehaviour
     {
         state = 1;
         body.velocity = new Vector2(body.velocity.x, ySpeed * 0.8f);
+        rollBuffer = 16;
     }
 
     //----------------------------------------------------------- Animations - Normal State -----------------------------------------------------------
@@ -179,13 +184,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.E))
         {
             ember += 1;
-            emberTint.a += 0.15f;
+            emberTint.a += 0.12f;
         }
-    }
-
-    public void BlastBlossom()
-    {
-
-            
     }
 }

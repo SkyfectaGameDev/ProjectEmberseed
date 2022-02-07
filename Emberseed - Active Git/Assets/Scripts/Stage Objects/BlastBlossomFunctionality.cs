@@ -7,7 +7,6 @@ public class BlastBlossomFunctionality : MonoBehaviour
     [SerializeField] public float charge;
     [SerializeField] private float launchMult;
 
-    private BoxCollider2D boxCollider;
     public Transform localScale;
     public GameObject indicator;
     private GameObject player;
@@ -28,8 +27,17 @@ public class BlastBlossomFunctionality : MonoBehaviour
         chargeSize.x = charge * 0.04f;
         chargeSize.y = charge * 0.04f;
         indicator.transform.localScale = chargeSize;
-    }
 
+        if (active == 1)
+        {
+            if (Input.GetKey(KeyCode.Space))
+            {
+                charge += 0.1f;
+                if (charge > 3)
+                    charge = 3;
+            }
+        }
+    }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
@@ -40,17 +48,10 @@ public class BlastBlossomFunctionality : MonoBehaviour
         }
     }
 
-
     private void Update()
     {
         if (active == 1)
         {
-            if (Input.GetKey(KeyCode.Space))
-            {
-                charge += 0.075f;
-                if (charge > 3)
-                    charge = 3;
-            }
             if (Input.GetKeyUp(KeyCode.Space))
             {
                 player.GetComponent<PlayerMovement>().body.constraints = RigidbodyConstraints2D.None;
@@ -59,11 +60,11 @@ public class BlastBlossomFunctionality : MonoBehaviour
                 player.GetComponent<PlayerMovement>().spriteColour.a = 1;
                 player.GetComponent<SpriteRenderer>().color = player.GetComponent<PlayerMovement>().spriteColour;
                 player.GetComponent<PlayerMovement>().body.velocity = new Vector2(0, ((charge * launchMult) + player.GetComponent<PlayerMovement>().ySpeed));
+                player.GetComponent<PlayerMovement>().rollBuffer = 60;
 
                 active = 0;
                 charge = 0f;
             }
         }
     }
-     
 }

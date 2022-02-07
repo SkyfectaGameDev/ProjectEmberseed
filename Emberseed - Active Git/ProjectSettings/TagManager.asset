@@ -9,7 +9,6 @@ TagManager:
   - Bounce
   - Enemy
   - Camera Trigger
-  - Blast Blossom
   layers:
   - Default
   - TransparentFX

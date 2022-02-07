@@ -27,7 +27,6 @@ public class BlastBlossomFunctionality : MonoBehaviour
     {
         chargeSize.x = charge * 0.04f;
         chargeSize.y = charge * 0.04f;
-
         indicator.transform.localScale = chargeSize;
     }
 
@@ -54,22 +53,17 @@ public class BlastBlossomFunctionality : MonoBehaviour
             }
             if (Input.GetKeyUp(KeyCode.Space))
             {
+                player.GetComponent<PlayerMovement>().body.constraints = RigidbodyConstraints2D.None;
+                player.GetComponent<PlayerMovement>().body.freezeRotation = true;
+                player.GetComponent<PlayerMovement>().state = 1;
                 player.GetComponent<PlayerMovement>().spriteColour.a = 1;
                 player.GetComponent<SpriteRenderer>().color = player.GetComponent<PlayerMovement>().spriteColour;
                 player.GetComponent<PlayerMovement>().body.velocity = new Vector2(0, ((charge * launchMult) + player.GetComponent<PlayerMovement>().ySpeed));
-                player.GetComponent<PlayerMovement>().state = 1;
+
+                active = 0;
+                charge = 0f;
             }
         }
     }
      
-
-
-    private void OnTriggerExit2D(Collider2D col)
-    {
-        if (col.gameObject.tag == "Player")
-        {
-            active = 0;
-            charge = 0f;
-        }
-    }
 }

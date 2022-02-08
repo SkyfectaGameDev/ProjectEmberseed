@@ -55,7 +55,7 @@ public class PlayerMovement : MonoBehaviour
         if (state == 1)
         {
 
-            xSpeed = 1.75f;
+            xSpeed = 1.65f;
             ControlsNormal();
             AnimationsNormal();
         }

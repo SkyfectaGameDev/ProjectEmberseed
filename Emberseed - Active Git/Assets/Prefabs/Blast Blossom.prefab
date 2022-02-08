@@ -155,7 +155,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   charge: 0
-  launchMult: 1.25
+  launchMultX: 0
+  launchMultY: 0
+  uncurl: 0
   open: {fileID: 21300000, guid: 1d8107a7d7540f94bad08c8f08f9e64a, type: 3}
   hold: {fileID: 21300000, guid: 4ae6fdd240e9c6547b0413d59825ad55, type: 3}
   localScale: {fileID: 1304027632755288718}

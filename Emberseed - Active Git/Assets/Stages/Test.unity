@@ -14322,7 +14322,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bc0af9a0e97dd954e9387ac445fe2c8f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 2
+  health: 1
   emberPrefab: {fileID: 5545101700702921344, guid: f50af36649d0cfc4abd1c8bb459ef87b, type: 3}
   localScale: {fileID: 644960884}
 --- !u!212 &1350279427
@@ -15053,6 +15053,32 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6168745343315317337, guid: 3a83f4f428179144cabf06efcd06efe0, type: 3}
   m_PrefabInstance: {fileID: 1304027633142065226}
   m_PrefabAsset: {fileID: 0}
+--- !u!61 &1938432375
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1938432369}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.02}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 0.64, y: 0.48}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.32, y: 0.04}
+  m_EdgeRadius: 0
 --- !u!1 &1953722679
 GameObject:
   m_ObjectHideFlags: 0

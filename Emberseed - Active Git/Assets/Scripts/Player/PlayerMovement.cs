@@ -54,7 +54,6 @@ public class PlayerMovement : MonoBehaviour
         // ----- State 1 = Aerial State -----
         if (state == 1)
         {
-
             xSpeed = 1.65f;
             ControlsNormal();
             AnimationsNormal();
@@ -105,6 +104,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (isGrounded() && state == 1)
             state = 0;
+
     }
 
         // ----- Interactable Object Mechanics -----

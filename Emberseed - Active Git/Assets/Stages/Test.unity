@@ -15554,6 +15554,14 @@ PrefabInstance:
       propertyPath: launchMult
       value: 1.35
       objectReference: {fileID: 0}
+    - target: {fileID: 1304027633921804607, guid: 3a83f4f428179144cabf06efcd06efe0, type: 3}
+      propertyPath: launchMultX
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1304027633921804607, guid: 3a83f4f428179144cabf06efcd06efe0, type: 3}
+      propertyPath: launchMultY
+      value: 2.65
+      objectReference: {fileID: 0}
     - target: {fileID: 2126783345810696541, guid: 3a83f4f428179144cabf06efcd06efe0, type: 3}
       propertyPath: m_Name
       value: Blast Blossom

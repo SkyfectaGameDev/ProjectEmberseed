@@ -5,7 +5,8 @@ using UnityEngine;
 public class BlastBlossomFunctionality : MonoBehaviour
 {
     [SerializeField] public float charge;
-    [SerializeField] private float launchMult;
+    [SerializeField] private float launchMultX;
+    [SerializeField] private float launchMultY;
     [SerializeField] private int uncurl;
     [SerializeField] private Sprite open;
     [SerializeField] private Sprite hold;
@@ -69,7 +70,7 @@ public class BlastBlossomFunctionality : MonoBehaviour
                 player.GetComponent<PlayerMovement>().state = 1;
                 player.GetComponent<PlayerMovement>().spriteColour.a = 1;
                 player.GetComponent<SpriteRenderer>().color = player.GetComponent<PlayerMovement>().spriteColour;
-                player.GetComponent<PlayerMovement>().body.velocity = new Vector2(0, ((charge * launchMult) + player.GetComponent<PlayerMovement>().ySpeed));
+                player.GetComponent<PlayerMovement>().body.velocity = new Vector3((charge * launchMultX), (charge * launchMultY), 0);
                 player.GetComponent<PlayerMovement>().rollBuffer = uncurl;
 
                 active = 0;

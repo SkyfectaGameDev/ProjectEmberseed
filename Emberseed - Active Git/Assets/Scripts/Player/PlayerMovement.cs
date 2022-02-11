@@ -74,11 +74,11 @@ public class PlayerMovement : MonoBehaviour
 
         if (xLock == false)
             HorizontalMovement();
+        if (isGrounded() == true)
+            xLock = false;
 
         if (rollBuffer > 0)
             rollBuffer--;
-        if (rollBuffer == 0)
-            xLock = false;
     }
 
     //------------------------------------------------------------ Controls - Normal ------------------------------------------------------------

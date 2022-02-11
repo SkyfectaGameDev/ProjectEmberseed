@@ -10,6 +10,7 @@ public class BlastBlossomFunctionality : MonoBehaviour
     [SerializeField] private int uncurl;
     [SerializeField] private Sprite open;
     [SerializeField] private Sprite hold;
+    [SerializeField] public bool blossomXLock;
 
     private SpriteRenderer sprite;
     private Animator anim;
@@ -72,6 +73,7 @@ public class BlastBlossomFunctionality : MonoBehaviour
                 player.GetComponent<SpriteRenderer>().color = player.GetComponent<PlayerMovement>().spriteColour;
                 player.GetComponent<PlayerMovement>().body.velocity = new Vector3((charge * launchMultX), (charge * launchMultY), 0);
                 player.GetComponent<PlayerMovement>().rollBuffer = uncurl;
+                player.GetComponent<PlayerMovement>().xLock = blossomXLock;
 
                 active = 0;
                 charge = 0f;

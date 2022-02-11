@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public int ember;
     [SerializeField] public int state;
     [SerializeField] public int rollBuffer;
+    [SerializeField] public bool xLock;
 
 
     public Rigidbody2D body;
@@ -29,6 +30,7 @@ public class PlayerMovement : MonoBehaviour
         capCollider = GetComponent<CapsuleCollider2D>();
         ember = 0;
         state = 0;
+        xLock = false;
         emberTint = new Color(1, 0.57f, 0.33f, 0f);
         spriteColour = GetComponent<SpriteRenderer>().color;
         material = GetComponent<SpriteRenderer>().material;
@@ -68,16 +70,15 @@ public class PlayerMovement : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float HorizontalInput = Input.GetAxisRaw("Horizontal");
-
         EmberMechanics();
+
+        if (xLock == false)
+            HorizontalMovement();
 
         if (rollBuffer > 0)
             rollBuffer--;
-
-
-        // ----- Moving Left & Right -----
-        body.velocity = new Vector2(HorizontalInput * xSpeed, body.velocity.y);
+        if (rollBuffer == 0)
+            xLock = false;
     }
 
     //------------------------------------------------------------ Controls - Normal ------------------------------------------------------------
@@ -149,7 +150,7 @@ public class PlayerMovement : MonoBehaviour
     // ----- Ground Collision Check -----
     private bool isGrounded()
     {
-        RaycastHit2D raycastHit = Physics2D.BoxCast(capCollider.bounds.center, capCollider.bounds.size - new Vector3(0f, -0.1f, 0f), 0f, Vector2.down, 0.1f, collisionLayer);
+        RaycastHit2D raycastHit = Physics2D.BoxCast(capCollider.bounds.center, capCollider.bounds.size - new Vector3(0.1f, -0.1f, 0f), 0f, Vector2.down, 0.1f, collisionLayer);
         return raycastHit.collider != null && anim.GetCurrentAnimatorStateInfo(0).IsTag("NonGrounded") != true;
     }
 
@@ -186,5 +187,13 @@ public class PlayerMovement : MonoBehaviour
             ember += 1;
             emberTint.a += 0.12f;
         }
+    }
+
+    private void HorizontalMovement()
+    {
+        float HorizontalInput = Input.GetAxisRaw("Horizontal");
+
+        // ----- Moving Left & Right -----
+        body.velocity = new Vector2(HorizontalInput * xSpeed, body.velocity.y);
     }
 }

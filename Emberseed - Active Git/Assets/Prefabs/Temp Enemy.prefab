@@ -194,6 +194,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 1
+  emberValue: 3
   emberPrefab: {fileID: 5545101700702921344, guid: f50af36649d0cfc4abd1c8bb459ef87b, type: 3}
   localScale: {fileID: 8590389163418296680}
 --- !u!1 &8590389163418296681

@@ -41,7 +41,9 @@ GameObject:
   - component: {fileID: 6168745343315317337}
   - component: {fileID: 1304027633921804601}
   - component: {fileID: 1304027633921804600}
+  - component: {fileID: 6940430947739351247}
   - component: {fileID: 1304027633921804607}
+  - component: {fileID: 6940430947739351242}
   m_Layer: 0
   m_Name: Blast Blossom
   m_TagString: Blast Blossom
@@ -57,7 +59,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2126783345810696541}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 6.08, y: -1.2800001, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1304027632755288718}
@@ -106,7 +108,7 @@ SpriteRenderer:
   m_SortingLayer: 2
   m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 1d8107a7d7540f94bad08c8f08f9e64a, type: 3}
-  m_Color: {r: 0.8679245, g: 0.3234247, b: 0.6734834, a: 1}
+  m_Color: {r: 0.8867924, g: 0.319, b: 0.379, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -129,7 +131,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.08, y: 0.06}
+  m_Offset: {x: 0, y: 0.16}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -140,7 +142,33 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.12, y: 0.12}
+  m_Size: {x: 0.32, y: 0.32}
+  m_EdgeRadius: 0
+--- !u!61 &6940430947739351247
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126783345810696541}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0.02}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0}
+    oldSize: {x: 0.64, y: 0.48}
+    newSize: {x: 0.16, y: 0.16}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.32, y: 0.04}
   m_EdgeRadius: 0
 --- !u!114 &1304027633921804607
 MonoBehaviour:
@@ -156,8 +184,27 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   charge: 0
   launchMultX: 0
-  launchMultY: 0
-  uncurl: 0
+  launchMultY: 2.65
+  uncurl: 42
   open: {fileID: 21300000, guid: 1d8107a7d7540f94bad08c8f08f9e64a, type: 3}
   hold: {fileID: 21300000, guid: 4ae6fdd240e9c6547b0413d59825ad55, type: 3}
   localScale: {fileID: 1304027632755288718}
+--- !u!95 &6940430947739351242
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2126783345810696541}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ba4b88e0b48a0ad42a37feea3fcd4ec6, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

@@ -5,6 +5,7 @@ using UnityEngine;
 public class EnemyFunctionality : MonoBehaviour
 {
     [SerializeField] public int health;
+    [SerializeField] public int emberValue;
     private Rigidbody2D body;
     private SpriteRenderer sprite;
     public GameObject emberPrefab;
@@ -28,9 +29,11 @@ public class EnemyFunctionality : MonoBehaviour
             destroyBuffer -= 1;
         if (destroyBuffer == 0)
         {
-            Instantiate(emberPrefab, localScale.position, localScale.rotation);
-            Instantiate(emberPrefab, localScale.position, localScale.rotation);
-            Instantiate(emberPrefab, localScale.position, localScale.rotation);
+            while (emberValue > 0)
+            {
+                Instantiate(emberPrefab, localScale.position, localScale.rotation);
+                emberValue--;
+            }
             Destroy(this.gameObject);
         }
         if (colourBuffer > 0)

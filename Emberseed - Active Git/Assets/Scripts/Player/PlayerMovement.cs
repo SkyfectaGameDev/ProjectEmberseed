@@ -120,10 +120,10 @@ public class PlayerMovement : MonoBehaviour
         if (col.gameObject.tag == "Blast Blossom")
         {
             state = 2;
-            gameObject.transform.position = snapPosition;
             spriteColour.a = 0;
             GetComponent<SpriteRenderer>().color = spriteColour;
             body.constraints = RigidbodyConstraints2D.FreezePositionY;
+            
         }
     }
     public void Bounce()

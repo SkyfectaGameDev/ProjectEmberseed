@@ -51,9 +51,10 @@ public class BlastBlossomFunctionality : MonoBehaviour
     {
         if (col.gameObject.tag == "Player")
         {
+            player.GetComponent<PlayerMovement>().snapPosition = new Vector3(localScale.position.x, localScale.position.y, 0);
             active = 1;
             sprite.sprite = hold;
-            player.GetComponent<PlayerMovement>().snapPosition = new Vector3(localScale.position.x, localScale.position.y, 0);
+            player.GetComponent<PlayerMovement>().gameObject.transform.position = player.GetComponent<PlayerMovement>().snapPosition;
         }
     }
 
@@ -74,6 +75,7 @@ public class BlastBlossomFunctionality : MonoBehaviour
                 player.GetComponent<PlayerMovement>().body.velocity = new Vector3((charge * launchMultX), (charge * launchMultY), 0);
                 player.GetComponent<PlayerMovement>().rollBuffer = uncurl;
                 player.GetComponent<PlayerMovement>().xLock = blossomXLock;
+                
 
                 active = 0;
                 charge = 0f;

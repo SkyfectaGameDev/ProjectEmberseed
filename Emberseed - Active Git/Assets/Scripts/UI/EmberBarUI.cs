@@ -23,15 +23,15 @@ public class EmberBarUI : MonoBehaviour
         lerpSpeed = 4f * Time.deltaTime;
     }
 
-    void Update()
+    void FixedUpdate()
     {
         UIEmber = player.GetComponent<PlayerMovement>().ember;
         material.SetColor("_Tint", player.GetComponent<PlayerMovement>().emberTint);
 
-        HealthBarFiller();
+        EmberBarFiller();
     }
 
-    void HealthBarFiller()
+    void EmberBarFiller()
     {
         barProgress = 0.05f + (UIEmber * 0.03f);
         emberBar.fillAmount = Mathf.Lerp(emberBar.fillAmount, barProgress, lerpSpeed);

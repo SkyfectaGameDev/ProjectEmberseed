@@ -5,6 +5,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] public float xSpeed;
     [SerializeField] public float ySpeed;
     [SerializeField] private LayerMask collisionLayer;
+    [SerializeField] public float health;
     [SerializeField] public int ember;
     [SerializeField] public int state;
     [SerializeField] public int rollBuffer;

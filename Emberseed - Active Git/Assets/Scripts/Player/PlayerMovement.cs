@@ -107,6 +107,13 @@ public class PlayerMovement : MonoBehaviour
         if (isGrounded() && state == 1)
             state = 0;
 
+        if (Input.GetKeyDown(KeyCode.Q) && ember >= 6 && health < 4)
+        {
+            ember -= 6;
+            health++;
+        }
+            
+
     }
 
         // ----- Interactable Object Mechanics -----

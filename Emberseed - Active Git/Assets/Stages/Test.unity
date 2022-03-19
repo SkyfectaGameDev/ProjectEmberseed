@@ -2959,6 +2959,7 @@ MonoBehaviour:
   launchMultX: -1
   launchMultY: 0.8
   uncurl: 20
+  flip: -1
   open: {fileID: 21300000, guid: 1d8107a7d7540f94bad08c8f08f9e64a, type: 3}
   hold: {fileID: 21300000, guid: 4ae6fdd240e9c6547b0413d59825ad55, type: 3}
   blossomXLock: 1
@@ -21373,6 +21374,7 @@ MonoBehaviour:
   launchMultX: 0
   launchMultY: 2.65
   uncurl: 42
+  flip: 0
   open: {fileID: 21300000, guid: 1d8107a7d7540f94bad08c8f08f9e64a, type: 3}
   hold: {fileID: 21300000, guid: 4ae6fdd240e9c6547b0413d59825ad55, type: 3}
   blossomXLock: 0

@@ -8,6 +8,7 @@ public class BlastBlossomFunctionality : MonoBehaviour
     [SerializeField] private float launchMultX;
     [SerializeField] private float launchMultY;
     [SerializeField] private int uncurl;
+    [SerializeField] public int flip;
     [SerializeField] private Sprite open;
     [SerializeField] private Sprite hold;
     [SerializeField] public bool blossomXLock;
@@ -55,6 +56,9 @@ public class BlastBlossomFunctionality : MonoBehaviour
             active = 1;
             sprite.sprite = hold;
             player.GetComponent<PlayerMovement>().gameObject.transform.position = player.GetComponent<PlayerMovement>().snapPosition;
+            
+            if (flip == -1)
+                player.GetComponent<PlayerMovement>().transform.localScale = new Vector3(-1, 1, 1);
         }
     }
 

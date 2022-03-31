@@ -57,8 +57,7 @@ public class BlastBlossomFunctionality : MonoBehaviour
             sprite.sprite = hold;
             player.GetComponent<PlayerMovement>().gameObject.transform.position = player.GetComponent<PlayerMovement>().snapPosition;
             
-            if (flip == -1)
-                player.GetComponent<PlayerMovement>().transform.localScale = new Vector3(-1, 1, 1);
+            
         }
     }
 
@@ -71,6 +70,11 @@ public class BlastBlossomFunctionality : MonoBehaviour
         {
             if (Input.GetKeyUp(KeyCode.Space))
             {
+                if (flip == -1)
+                    player.GetComponent<PlayerMovement>().transform.localScale = new Vector3(-1, 1, 1);
+                if (flip == 1)
+                    player.GetComponent<PlayerMovement>().transform.localScale = new Vector3(1, 1, 1);
+
                 player.GetComponent<PlayerMovement>().body.constraints = RigidbodyConstraints2D.None;
                 player.GetComponent<PlayerMovement>().body.freezeRotation = true;
                 player.GetComponent<PlayerMovement>().state = 1;
